@@ -10,27 +10,25 @@ A modern, secure file-sharing application with a sleek black Apple-inspired desi
 - **💫 Apple-Inspired UI**: Beautiful glassmorphism design with smooth animations
 - **📦 Flexible Uploads**: Support for any file type with 2GB total limit
 - **⚡ Real-time**: Instant file sharing with sophisticated hover interactions
+- **💾 In-Memory Storage**: Fast file handling with memory-based storage
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js 18+ and npm
-- PostgreSQL database
 
 ### Installation
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/BTDrop.git
+git clone https://github.com/Gbhanuteja22/BTDrop.git
 cd BTDrop
 ```
 
 2. **Install dependencies**
 ```bash
-npm install
-cd frontend && npm install
-cd ../backend && npm install
+npm run install:all
 ```
 
 3. **Environment Setup**
@@ -38,11 +36,14 @@ Create `.env` file in the backend directory:
 ```env
 PORT=3001
 FRONTEND_URL=http://localhost:5173
-DATABASE_URL=postgresql://username:password@localhost:5432/btdrop
 ```
 
 4. **Start the application**
 ```bash
+# Option 1: Start both frontend and backend
+npm run dev
+
+# Option 2: Start separately
 # Terminal 1 - Backend
 cd backend
 npm run dev
@@ -67,10 +68,12 @@ BTDrop/
 ├── backend/           # Node.js backend
 │   ├── src/
 │   │   ├── routes/       # API endpoints
-│   │   ├── services/     # Business logic
-│   │   └── middleware/   # Express middleware
+│   │   ├── services/     # Business logic & in-memory storage
+│   │   ├── middleware/   # Express middleware
+│   │   └── types/        # TypeScript type definitions
+│   ├── uploads/          # File storage directory
 │   └── package.json
-└── package.json       # Root package.json
+└── package.json       # Root workspace configuration
 ```
 
 ## 🎨 Design Features
@@ -88,13 +91,16 @@ BTDrop/
 - Vite for development and building
 - Tailwind CSS for styling
 - TanStack Query for state management
+- Axios for API requests
 
 **Backend:**
-- Node.js with Express
-- TypeScript
-- PostgreSQL database
-- Helmet for security
-- Express Rate Limiting
+- Node.js with Express and TypeScript
+- In-memory storage for fast file handling
+- Multer for file uploads
+- UUID for unique file identification
+- Express Rate Limiting & Helmet for security
+- Morgan for logging
+- Compression for response optimization
 
 ## 📋 Usage
 
@@ -112,8 +118,53 @@ BTDrop/
 ## 🔒 Security Features
 
 - Rate limiting on uploads and API endpoints
-- CORS protection
+- CORS protection with origin validation
 - Helmet security headers
 - Automatic file cleanup after 24 hours
 - Input validation and sanitization
-# BTDrop
+- Secure file storage with UUID naming
+
+## 🛠️ Development
+
+### Available Scripts
+
+**Root level:**
+- `npm run dev` - Start both frontend and backend
+- `npm run build` - Build both projects
+- `npm run install:all` - Install all dependencies
+
+**Frontend:**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+**Backend:**
+- `npm run dev` - Start development server with nodemon
+- `npm run build` - Compile TypeScript
+- `npm run start` - Start production server
+
+## 🗂️ File Storage
+
+Files are stored locally in the `backend/uploads/` directory with:
+- UUID-based file naming for security
+- In-memory session management for fast access
+- Automatic cleanup of expired files
+- Support for any file type
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by Apple's design philosophy
+- Built with modern web technologies
+- Focused on user experience and security

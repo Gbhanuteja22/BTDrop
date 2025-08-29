@@ -1,0 +1,37 @@
+{
+  "name": "btdrop",
+  "version": "1.0.0",
+  "description": "Fast, simple, and reliable file sharing web app",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "docker:dev": "docker-compose -f docker/docker-compose.dev.yml up",
+    "docker:prod": "docker-compose -f docker/docker-compose.prod.yml up",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "file-sharing",
+    "upload",
+    "download",
+    "react",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "BTDrop Team",
+  "license": "MIT"
+}
