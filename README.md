@@ -1,6 +1,6 @@
 # BTDrop
 
-A modern, secure file-sharing application with a sleek black Apple-inspired design. Share files instantly with auto-generated 4-digit codes.
+A modern, secure file-sharing application with a sleek design. Share files instantly with auto-generated 4-digit codes.
 
 ## ✨ Features
 
